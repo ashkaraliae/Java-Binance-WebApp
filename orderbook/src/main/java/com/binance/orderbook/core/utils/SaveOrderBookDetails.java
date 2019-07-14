@@ -90,21 +90,13 @@ public class SaveOrderBookDetails {
 						orderBookModel
 								.setBID((NavigableMap<BigDecimal, BigDecimal>) depthCache
 										.get("BIDS"));
-						session.setAttribute("model", orderBookModel);
+						orderBookRepository.save(orderBookModel);
 						System.out.println(orderBookModel);
 						
 					}
 
 				});
 	}
-private void save(OrderBookModel orderBookModel){
-	if(i==1){
-		System.out.println("-----save +"+i);
-		orderBookRepository.save(orderBookModel);
-		orderBookRepository.flush();
-	}
-	i++;
-}
 	/**
 	 * Updates an order book (bids or asks) with a delta received from the
 	 * server.
